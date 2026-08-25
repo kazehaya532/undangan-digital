@@ -1,4 +1,4 @@
-**Digital Wedding Invitation**
+# **Digital Wedding Invitation**
 
 Static digital wedding invitation
 
