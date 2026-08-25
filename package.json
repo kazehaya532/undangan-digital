@@ -1,0 +1,10 @@
+{
+  "name": "digital-wedding-invitation",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "npx --yes serve .",
+    "check": "node --check assets/js/script.js"
+  }
+}

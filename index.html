@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Undangan pernikahan digital Aurum dan Alul."
+    />
+    <meta name="theme-color" content="#17254a" />
+    <title>Aurum & Alul | Undangan Pernikahan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600;6..96,700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <!--
+      THESIS: A reference-style digital wedding invitation that opens like a ceremonial cover and then unfolds through couple, event, wish, and gift sections without losing the plum/lavender/denim/blue/white identity.
+      OWN-WORLD: Lavender-white gated invitation canvas, deep denim typography, plum ornamental rules, misted blue photo placeholders, image-backed scripture/wish/closing sections, desktop landscape spreads, and mobile bottom navigation.
+      STORY: Guests open the invitation, meet Aurum and Alul, read the December 6 event details, send a local wish, inspect placeholder gift details, save the date, and open the venue map.
+      FIRST VIEWPORT: A full-height locked cover with “The Wedding Of,” Aurum & Alul, the Sunday date, guest-recipient card, and one dominant Buka Undangan action; all later content remains hidden until opened.
+      FORM: Reference-inspired mobile wedding invitation flow requested by the user; palette remains plum/lavender/denim/blue/white from the prior approved direction.
+      FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
+    -->
+    <a class="skip-link" href="#openInvitation">Lewati ke tombol buka undangan</a>
+
+    <main class="invitation-shell">
+      <section class="cover section-screen" id="section-cover" aria-labelledby="cover-title">
+        <div class="ornament ornament--top" aria-hidden="true"></div>
+        <div class="cover__content">
+          <p class="cover__small">The Wedding Of</p>
+          <h1 id="cover-title">Aurum <span>&amp;</span> Alul</h1>
+          <p class="cover__date">Sunday, 6 December 2026</p>
+          <div class="guest-card" aria-label="Tujuan undangan">
+            <p>Kepada Yth.</p>
+            <strong>Bapak/Ibu/Saudara/i</strong>
+            <span>Tamu Undangan</span>
+            <small>Mohon maaf apabila ada kesalahan penulisan nama atau gelar.</small>
+          </div>
+          <a class="button button--primary" href="#opening" id="openInvitation">Buka Undangan</a>
+        </div>
+        <div class="ornament ornament--bottom" aria-hidden="true"></div>
+      </section>
+
+      <div class="gated-content" id="invitationContent" hidden inert>
+        <section class="intro section-panel" id="opening" aria-label="Pembuka dan foto mempelai">
+          <div class="intro__copy">
+            <p>
+              Atas karunia Tuhan Yang Maha Esa, perkenankanlah kami menyampaikan
+              kabar bahagia kepada Bapak/Ibu/Saudara/i mengenai pernikahan kami.
+            </p>
+          </div>
+          <div class="opening-photos" aria-label="Template foto mempelai">
+            <div class="opening-photo opening-photo--aurum" role="img" aria-label="Placeholder foto Aurum">
+              <span>Foto Aurum</span>
+            </div>
+            <div class="opening-photo opening-photo--alul" role="img" aria-label="Placeholder foto Alul">
+              <span>Foto Alul</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="couple section-panel" id="couple" aria-labelledby="couple-title">
+        <div class="section-heading">
+          <h2 id="couple-title" class="couple-title">Wedding Couple</h2>
+        </div>
+        <div class="couple-list">
+          <article class="person-card">
+            <h3>Aurum</h3>
+            <p class="person-card__name">Aurum</p>
+            <p>Putri dari Bapak Nama Ayah &amp; Ibu Nama Ibu</p>
+          </article>
+          <div class="ampersand" aria-hidden="true">&amp;</div>
+          <article class="person-card">
+            <h3>Alul</h3>
+            <p class="person-card__name">Alul</p>
+            <p>Putra dari Bapak Nama Ayah &amp; Ibu Nama Ibu</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="save-date section-panel" aria-labelledby="save-title">
+        <div class="section-heading">
+          <p>Save The Date</p>
+          <h2 id="save-title">Menuju Hari Bahagia</h2>
+        </div>
+        <div class="countdown__clock" data-countdown="2026-12-06T09:00:00+07:00" aria-label="Hitung mundur menuju 6 December 2026 pukul 09.00 WIB">
+          <span><strong data-days>0</strong><em>Hari</em></span>
+          <span><strong data-hours>0</strong><em>Jam</em></span>
+          <span><strong data-minutes>0</strong><em>Menit</em></span>
+          <span><strong data-seconds>0</strong><em>Detik</em></span>
+        </div>
+        <a class="button button--secondary" id="calendarLink" href="#event">Simpan tanggal</a>
+      </section>
+
+      <section class="event section-panel" id="event" aria-labelledby="event-title">
+        <div class="section-heading">
+          <p>Our Special</p>
+          <h2 id="event-title">Wedding Event</h2>
+        </div>
+        <div class="event-stack">
+          <article class="event-card">
+            <div class="event-card__body">
+              <h3>Akad Nikah</h3>
+              <p><strong>Tempat placeholder:</strong> The Botanica Hall, Bandung</p>
+              <p>Sunday, 6 December 2026</p>
+              <time datetime="2026-12-06T09:00:00+07:00">09.00 WIB - Selesai</time>
+            </div>
+            <a class="button button--ghost" href="https://maps.google.com/?q=The%20Botanica%20Hall%20Bandung" target="_blank" rel="noreferrer">Kunjungi Lokasi Placeholder</a>
+          </article>
+          <article class="event-card event-card--blue">
+            <div class="event-card__body">
+              <h3>Acara Resepsi</h3>
+              <p><strong>Tempat placeholder:</strong> The Botanica Hall, Bandung</p>
+              <p>Sunday, 6 December 2026</p>
+              <p class="event-note">Waktu resepsi menyusul setelah akad.</p>
+            </div>
+            <a class="button button--ghost" href="https://maps.google.com/?q=The%20Botanica%20Hall%20Bandung" target="_blank" rel="noreferrer">Kunjungi Lokasi Placeholder</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="gallery-strip section-panel" aria-labelledby="gallery-title">
+        <div class="section-heading">
+          <p>Wedding Photos</p>
+          <h2 id="gallery-title">Our Moments</h2>
+        </div>
+        <div class="photo-slider" aria-label="Slider foto placeholder prewedding">
+          <button class="slider-button slider-button--prev" type="button" data-slider-prev aria-label="Foto sebelumnya">Prev</button>
+          <div class="slides" id="photoSlides">
+            <figure class="photo-wide is-active" role="group" aria-roledescription="slide" aria-label="1 dari 3">
+              <span>Landscape Photo 01</span>
+            </figure>
+            <figure class="photo-wide" role="group" aria-roledescription="slide" aria-label="2 dari 3">
+              <span>Landscape Photo 02</span>
+            </figure>
+            <figure class="photo-wide" role="group" aria-roledescription="slide" aria-label="3 dari 3">
+              <span>Landscape Photo 03</span>
+            </figure>
+          </div>
+          <button class="slider-button slider-button--next" type="button" data-slider-next aria-label="Foto berikutnya">Next</button>
+        </div>
+        <div class="slider-dots" aria-label="Navigasi foto">
+          <button type="button" class="is-active" data-slide-dot="0" aria-label="Tampilkan foto 1"></button>
+          <button type="button" data-slide-dot="1" aria-label="Tampilkan foto 2"></button>
+          <button type="button" data-slide-dot="2" aria-label="Tampilkan foto 3"></button>
+        </div>
+        <p class="credit">Wedding Photos placeholder by your future photographer</p>
+      </section>
+
+      <section class="quote image-section section-panel" aria-labelledby="quote-title">
+        <span class="background-label">Background photo placeholder</span>
+        <div class="quote__card">
+          <p id="quote-title">Q.S. Ar-Rum: 21</p>
+          <blockquote>
+            “Dan di antara tanda-tanda kekuasaan-Nya diciptakan-Nya untukmu
+            pasangan hidup dari jenismu sendiri supaya kamu mendapat ketenangan
+            hati dan dijadikan-Nya kasih sayang di antara kamu.”
+          </blockquote>
+        </div>
+      </section>
+
+      <section class="wish image-section section-panel" id="wish" aria-labelledby="wish-title">
+        <span class="background-label">Background photo placeholder</span>
+        <div class="section-heading">
+          <p>Beri Doa &amp; Ucapan Terbaikmu</p>
+          <h2 id="wish-title">Wedding Wish</h2>
+        </div>
+        <p class="local-note">Form ucapan ini masih local-only: pesan tampil di halaman ini, tetapi belum tersimpan ke server.</p>
+        <form class="wish-form" id="wishForm">
+          <label>
+            <span>Nama</span>
+            <input name="name" autocomplete="name" placeholder="Nama Anda" required />
+          </label>
+          <label>
+            <span>Pesan</span>
+            <textarea name="message" rows="4" placeholder="Tuliskan doa terbaik Anda" required></textarea>
+          </label>
+          <button class="button button--primary" type="submit">Kirimkan Ucapan</button>
+        </form>
+        <div class="wish-list" id="wishList" aria-live="polite"></div>
+      </section>
+
+      <section class="gift section-panel" id="gift" aria-labelledby="gift-title">
+        <div class="section-heading">
+          <p>Hadiah Spesial</p>
+          <h2 id="gift-title">Amplop Digital</h2>
+        </div>
+        <p class="gift__copy">
+          Kehadiran dan doa restu Anda merupakan hadiah terindah. Jika memberi
+          adalah bentuk doa dan kasih, detail berikut masih placeholder dan dapat diganti.
+        </p>
+        <button class="button button--secondary" type="button" id="toggleGift" aria-expanded="false" aria-controls="giftAccounts">Lihat Rekening</button>
+        <div class="gift-accounts" id="giftAccounts" hidden>
+          <article class="account-card">
+            <span>Bank BCA</span>
+            <strong>0812 3456 78XX</strong>
+            <p>a.n Aurum</p>
+            <button type="button" data-copy="0812345678XX">Salin Rekening</button>
+          </article>
+          <article class="account-card">
+            <span>DANA</span>
+            <strong>0812 3456 78XX</strong>
+            <p>a.n Alul</p>
+            <button type="button" data-copy="0812345678XX">Salin Nomor</button>
+          </article>
+        </div>
+        <p class="copy-status" id="copyStatus" role="status"></p>
+      </section>
+
+      <section class="closing section-screen" aria-labelledby="closing-title">
+        <span class="background-label">Wedding photo / GIF placeholder</span>
+        <p>Hope to see you soon</p>
+        <h2 id="closing-title">Aurum &amp; Alul</h2>
+        <p>
+          Merupakan kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i
+          berkenan hadir dan memberikan doa restu.
+        </p>
+        </section>
+      </div>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Navigasi undangan" aria-hidden="true" inert>
+      <a href="#section-cover" aria-label="Home">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11.5 12 4l8 7.5V20h-5v-5H9v5H4v-8.5Z" /></svg>
+        <span>Home</span>
+      </a>
+      <a href="#couple" aria-label="Couple">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 12c2.2 0 4-1.8 4-4S10.2 4 8 4 4 5.8 4 8s1.8 4 4 4Zm8 0c2 0 3.6-1.6 3.6-3.6S18 4.8 16 4.8s-3.6 1.6-3.6 3.6S14 12 16 12ZM2.8 20c.6-3.5 2.5-5.4 5.2-5.4s4.6 1.9 5.2 5.4H2.8Zm10.2 0c.4-2.3 1.5-3.9 3.1-4.6 2.2.2 3.8 1.8 4.4 4.6H13Z" /></svg>
+        <span>Couple</span>
+      </a>
+      <a href="#event" aria-label="Event">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h2v3h6V2h2v3h3v17H4V5h3V2Zm11 9H6v9h12v-9Z" /></svg>
+        <span>Event</span>
+      </a>
+      <a href="#wish" aria-label="Wish">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v12H8l-4 4V4Zm4 5h8V7H8v2Zm0 4h6v-2H8v2Z" /></svg>
+        <span>Wish</span>
+      </a>
+      <a href="#gift" aria-label="Gift">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h16v12H4V9Zm2 2v8h12v-8H6Zm4-8c1.2 0 2 .7 2 1.7 0 .5-.2.9-.5 1.3H14c-.3-.4-.5-.8-.5-1.3 0-1 1-1.7 2.1-1.7 1.5 0 2.7 1.2 2.7 2.6 0 .6-.2 1.1-.5 1.4H20v2H4V7h2.2c-.3-.3-.5-.8-.5-1.4C5.7 4.2 7 3 8.4 3c.7 0 1.3.3 1.6.8ZM8.4 5c-.4 0-.7.3-.7.6 0 .4.4.7.8.7h2c-.5-.8-1.2-1.3-2.1-1.3Zm7.2 0c-.9 0-1.6.5-2.1 1.3h2c.4 0 .8-.3.8-.7 0-.3-.3-.6-.7-.6Z" /></svg>
+        <span>Gift</span>
+      </a>
+    </nav>
+
+    <script src="assets/js/script.js" defer></script>
+  </body>
+</html>
