@@ -1,6 +1,6 @@
-# Aurum & Alul Digital Wedding Invitation
+Digital Wedding Invitation
 
-Static digital wedding invitation for Aurum & Alul.
+Static digital wedding invitation
 
 ## Preview Locally
 
