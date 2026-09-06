@@ -12,11 +12,11 @@ The palette is white, lavender paper, deep denim ink, plum, and clear blue. Whit
 
 ## Typography
 
-Display type uses Bodoni Moda for high-contrast editorial names and section titles. Interface, logistics, schedule notes, and actions use Manrope for clean mobile legibility. Numerals in schedules and countdowns use tabular treatment where timing matters.
+Heading and couple-name display type uses Marcellus for clearer mobile readability, especially the capital A in Aurum and Alul. Bodoni Moda remains reserved for the Q.S. Ar-Rum quote and countdown numerals where its high-contrast editorial character is still legible. Interface, logistics, schedule notes, and actions use Manrope for clean mobile legibility. Numerals in schedules and countdowns use tabular treatment where timing matters.
 
 ## Components
 
-The first viewport is a full-screen invitation cover with “The Wedding Of,” Aurum & Alul, the Sunday date, a guest-recipient card, and a dominant `Buka Undangan` action. Later sections remain hidden and inert until opened, and opening now lands on the intro photo-template section before the couple names. The pre-couple intro carries two photo templates like the reference, while the couple section itself presents an enlarged “Wedding Couple” heading, individual names, parent placeholders, and generous whitespace without photos. Event details use stacked ceremonial cards. Gallery uses three landscape placeholder slides. The Q.S. Ar-Rum section is a compact landscape background placeholder with smaller scripture text inside a colored panel so the image can dominate. Wish and gift sections are included like the reference, with the wish form stored only in the current browser session and gift accounts clearly placeholder.
+The first viewport is a full-screen invitation cover with “The Wedding Of,” Aurum & Alul, the Sunday date, a guest-recipient card, and a dominant `Buka Undangan` action. Later sections remain hidden and inert until opened, and opening now lands on the intro photo-template section before the couple names. The pre-couple intro carries two photo templates like the reference, while the couple section itself presents an enlarged “Wedding Couple” heading, individual names, parent placeholders, and generous whitespace without photos. Event details use stacked ceremonial cards. Gallery uses three landscape placeholder slides. The Q.S. Ar-Rum section is a compact landscape background placeholder with a smaller bottom-right colored text panel and justified verse copy so the image can dominate. Wish and gift sections are included like the reference, with the wish form stored only in the current browser session and gift accounts clearly placeholder.
 
 ## Interaction And Motion
 
