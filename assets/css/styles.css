@@ -13,6 +13,7 @@
   --muted: #64709b;
   --rule: rgba(23, 37, 74, 0.18);
   --shadow: 0 24px 80px rgba(23, 37, 74, 0.18), 0 8px 24px rgba(23, 37, 74, 0.1);
+  --name-display: "Marcellus", "Cinzel", "Times New Roman", serif;
   --display: "Bodoni Moda", "Didot", "Bodoni 72", serif;
   --sans: "Manrope", "Avenir Next", "Segoe UI", sans-serif;
 }
@@ -187,8 +188,9 @@ figure {
 h1,
 h2,
 h3 {
-  font-family: var(--display);
-  letter-spacing: -0.052em;
+  font-family: var(--name-display);
+  font-weight: 400;
+  letter-spacing: -0.018em;
 }
 
 h1 {
@@ -409,7 +411,7 @@ h1 span {
 }
 
 .ampersand {
-  font-family: var(--display);
+  font-family: var(--name-display);
   text-align: center;
 }
 
@@ -641,8 +643,9 @@ h1 span {
   min-height: clamp(15rem, 38vw, 24rem);
   display: grid;
   align-content: end;
+  justify-items: end;
   color: var(--white);
-  text-align: center;
+  text-align: left;
 }
 
 .background-label {
@@ -662,28 +665,31 @@ h1 span {
 }
 
 .quote__card {
-  width: min(100%, 27rem);
-  margin: 0 auto;
-  padding: clamp(0.75rem, 3vw, 1.15rem);
+  width: min(82%, 22rem);
+  margin: 0 0 0 auto;
+  padding: clamp(0.7rem, 2.4vw, 1rem);
   background: rgba(23, 37, 74, 0.76);
   box-shadow: 0 18px 48px rgba(23, 37, 74, 0.28);
 }
 
 .quote__card p {
-  margin-bottom: 0.65rem;
+  margin-bottom: 0.5rem;
   color: var(--blue);
-  font-size: 0.68rem;
+  font-size: 0.6rem;
   font-weight: 800;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.18em;
+  text-align: right;
   text-transform: uppercase;
 }
 
 blockquote {
   margin: 0;
   font-family: var(--display);
-  font-size: clamp(0.94rem, 3.2vw, 1.5rem);
-  line-height: 1.32;
-  letter-spacing: -0.022em;
+  font-size: clamp(0.82rem, 2.8vw, 1.18rem);
+  line-height: 1.42;
+  letter-spacing: -0.012em;
+  text-align: justify;
+  text-align-last: left;
 }
 
 .wish {
@@ -985,10 +991,14 @@ body.invitation-open .bottom-nav {
     aspect-ratio: 16 / 9;
   }
 
+  .quote__card {
+    width: min(42%, 24rem);
+  }
+
   blockquote {
-    max-width: 28rem;
+    max-width: 23rem;
     margin-inline: auto;
-    font-size: clamp(1.05rem, 1.55vw, 1.75rem);
+    font-size: clamp(0.9rem, 1.08vw, 1.18rem);
   }
 
   .wish-form,
