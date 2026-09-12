@@ -20,3 +20,6 @@ skills-lock.json
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Original wedding photography (publish optimized derivatives only)
+/wedd_picture/

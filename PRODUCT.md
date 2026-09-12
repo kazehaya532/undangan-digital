@@ -28,11 +28,11 @@ Guests may view the invitation on phones in portrait orientation, share it throu
 
 ## Capabilities and Constraints
 
-The invitation includes a reference-style opening cover that must be opened with `Buka Undangan` before other sections are available, couple introduction photo placeholders, couple names/details, save-the-date countdown, event information, a three-image landscape photo slider, local-only wish form, and gift/amplop section. Confirmed invitation details are Aurum & Alul and Sunday, 6 December 2026, 09.00 WIB - Selesai. Venue, parent names, portrait photography, bank/e-wallet details, and map link remain replaceable placeholders. It should work as a static website.
+The invitation includes a reference-style opening cover that must be opened with `Buka Undangan` before other sections are available, a unified couple introduction with one shared portrait and family details, event information followed by a save-the-date countdown, a five-image portrait photo slider, a Q.S. Ar-Rum slideshow that reuses three gallery portraits, a local-only wish form, a gift/amplop section, and a closing slideshow that reuses three gallery portraits. Selecting Wish begins at Q.S. Ar-Rum before continuing into the form. Confirmed invitation details include Aurum Khoirunnisa, S.T and Fahrur Rozi, S.T, their parent information, two bank accounts, and Minggu, 6 Desember 2026. Akad begins at 09.00 WIB and the reception begins at 10.00, both at Griya Curug Blok D5 No.23. One real couple portrait and five real gallery portraits are available, and the confirmed map link opens the shared venue. It should work as a static website.
 
 ## Evidence on Hand
 
-The user provided the couple names Aurum & Alul, the event date/time Sunday, 6 December 2026, 09.00 WIB - Selesai, the reference site https://demosdigitalundangan.com/ws02/, and requested a gate-first flow with more photo placeholders. No real venue, photography, map link, family details, or gift account details were provided. Placeholder content must remain easy to identify and replace; factual claims must not imply confirmed real event data.
+The user provided the couple names and family details, BCA and BNI gift accounts, the event date Minggu, 6 Desember 2026, Akad and reception times, the Griya Curug venue, a Google Maps link, one couple portrait, five gallery portraits, the reference site https://demosdigitalundangan.com/ws02/, and requested a gate-first flow with portrait photography and automatic slideshows. The user also requested that existing Our Moments photography be reused in the closing section.
 
 ## Product Principles
 
