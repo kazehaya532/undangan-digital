@@ -14,6 +14,7 @@ Thumbs.db
 .impeccable/
 opencode.ai/
 skills-lock.json
+/tools/
 
 # Logs
 *.log

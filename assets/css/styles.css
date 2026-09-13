@@ -194,6 +194,10 @@ body.reveal-motion [data-reveal-section].is-revealed [data-reveal="heading"] {
   clip-path: inset(-0.45rem -0.2rem -0.85rem -0.2rem);
 }
 
+body.reveal-motion [data-reveal-section].is-revealed [data-reveal="copy"] {
+  clip-path: inset(-2.5rem -0.5rem -1rem -0.5rem);
+}
+
 body.reveal-motion .couple-intro [data-reveal="media"] {
   clip-path: inset(0 0 100% 0);
   transform: scale(1.025);
@@ -408,6 +412,10 @@ h1 span {
   display: block;
 }
 
+.guest-card [hidden] {
+  display: none;
+}
+
 .guest-card p,
 .guest-card span {
   margin-bottom: 0.25rem;
@@ -417,6 +425,8 @@ h1 span {
 .guest-card strong {
   margin-bottom: 0.25rem;
   font-size: 1.02rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
 }
 
 .guest-card small {
@@ -510,6 +520,16 @@ h1 span {
   color: var(--denim-soft);
   font-size: clamp(1rem, 3.6vw, 1.2rem);
   line-height: 1.8;
+}
+
+.intro__copy .intro__arabic {
+  font-family: "Amiri", "Scheherazade New", "Traditional Arabic", "Amiri Quran", serif;
+  color: var(--plum);
+  direction: rtl;
+  unicode-bidi: isolate;
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  line-height: 2.4;
+  margin: 0 auto 1rem;
 }
 
 .couple-portrait {
@@ -1243,6 +1263,37 @@ textarea {
 .wish-list p,
 .account-card p {
   margin: 0.35rem 0 0;
+}
+
+.wish-list small {
+  display: block;
+  margin-top: 0.4rem;
+  color: var(--denim-soft);
+  font-size: 0.72rem;
+}
+
+.hp-field {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.wish-status {
+  min-height: 1.4em;
+  margin: 0.75rem 0 0;
+  color: var(--plum);
+  font-weight: 700;
+  text-align: center;
+}
+
+.wish-status[data-error="true"] {
+  color: #a3283f;
 }
 
 .gift {

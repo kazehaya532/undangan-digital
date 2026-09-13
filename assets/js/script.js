@@ -1,5 +1,5 @@
 const event = {
-  title: "Pernikahan Aurum & Fahrur",
+  title: "Pernikahan Fahrur & Aurum",
   start: "2026-12-06T09:00:00+07:00",
   end: null,
   location: "Griya Curug Blok D5 No.23",
@@ -7,6 +7,32 @@ const event = {
 };
 
 const pad = (value) => String(value).padStart(2, "0");
+
+const guestName = document.querySelector("#guestName");
+const guestDefault = document.querySelector("#guestDefault");
+
+if (guestName && guestDefault) {
+  const parameters = new Map();
+
+  new URLSearchParams(window.location.search).forEach((value, key) => {
+    const normalizedKey = key.toLowerCase();
+    if (!parameters.has(normalizedKey)) {
+      parameters.set(normalizedKey, value);
+    }
+  });
+
+  const recipient = ["to", "kepada", "for", "u"]
+    .map((key) => parameters.get(key))
+    .find((value) => value && value.trim())
+    ?.replace(/\s+/g, " ")
+    .trim()
+    .slice(0, 80);
+
+  if (recipient) {
+    guestName.textContent = recipient;
+    guestDefault.hidden = true;
+  }
+}
 
 const toCalendarStamp = (dateString) => {
   const date = new Date(dateString);
@@ -65,29 +91,136 @@ if (countdown) {
 
 const wishForm = document.querySelector("#wishForm");
 const wishList = document.querySelector("#wishList");
+const wishStatus = document.querySelector("#wishStatus");
+
+const wishConfig = window.WEDDING_CONFIG || {};
+const isPlaceholder = (value) =>
+  typeof value !== "string" || value.trim() === "" || value.includes("YOUR-");
+const wishEnabled =
+  Boolean(window.supabase) &&
+  typeof wishConfig.SUPABASE_URL === "string" &&
+  /^https:\/\//.test(wishConfig.SUPABASE_URL) &&
+  !isPlaceholder(wishConfig.SUPABASE_URL) &&
+  !isPlaceholder(wishConfig.SUPABASE_ANON_KEY);
+
+const wishClient = wishEnabled
+  ? window.supabase.createClient(wishConfig.SUPABASE_URL, wishConfig.SUPABASE_ANON_KEY)
+  : null;
+
+const setWishStatus = (message, isError) => {
+  if (!wishStatus) {
+    return;
+  }
+
+  wishStatus.textContent = message;
+  wishStatus.dataset.error = String(Boolean(isError));
+};
+
+const relativeWishTime = (isoString) => {
+  const then = new Date(isoString).getTime();
+  if (Number.isNaN(then)) {
+    return "";
+  }
+
+  const seconds = Math.max(Math.floor((Date.now() - then) / 1000), 0);
+  if (seconds < 60) {
+    return "baru saja";
+  }
+
+  const minutes = Math.floor(seconds / 60);
+  if (minutes < 60) {
+    return `${minutes} menit lalu`;
+  }
+
+  const hours = Math.floor(minutes / 60);
+  if (hours < 24) {
+    return `${hours} jam lalu`;
+  }
+
+  return `${Math.floor(hours / 24)} hari lalu`;
+};
+
+const renderWish = (wish) => {
+  const article = document.createElement("article");
+  const author = document.createElement("strong");
+  const copy = document.createElement("p");
+  const time = document.createElement("small");
+
+  author.textContent = wish.name;
+  copy.textContent = wish.message;
+  time.textContent = relativeWishTime(wish.created_at);
+  article.append(author, copy, time);
+  wishList.prepend(article);
+};
 
 if (wishForm && wishList) {
-  wishForm.addEventListener("submit", (event) => {
+  const loadWishes = async () => {
+    if (!wishClient) {
+      return;
+    }
+
+    const { data, error } = await wishClient
+      .from("wedding_wishes")
+      .select("name, message, created_at")
+      .eq("approved", true)
+      .order("created_at", { ascending: false })
+      .range(0, 49);
+
+    if (error) {
+      setWishStatus("Ucapan gagal dimuat. Silakan muat ulang halaman.", true);
+      return;
+    }
+
+    (data || []).slice().reverse().forEach(renderWish);
+  };
+
+  wishForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     const formData = new FormData(wishForm);
+    if (String(formData.get("website") || "").trim()) {
+      wishForm.reset();
+      return;
+    }
+
     const name = String(formData.get("name") || "").trim();
     const message = String(formData.get("message") || "").trim();
 
     if (!name || !message) {
+      setWishStatus("Mohon isi nama dan pesan Anda.", true);
       return;
     }
 
-    const wish = document.createElement("article");
-    const author = document.createElement("strong");
-    const copy = document.createElement("p");
+    if (!wishClient) {
+      setWishStatus("Belum terhubung ke server. Silakan hubungi pemilik undangan.", true);
+      return;
+    }
 
-    author.textContent = name;
-    copy.textContent = message;
-    wish.append(author, copy);
-    wishList.prepend(wish);
+    const submitButton = wishForm.querySelector('button[type="submit"]');
+    if (submitButton) {
+      submitButton.disabled = true;
+    }
+    setWishStatus("");
+
+    const { error } = await wishClient.from("wedding_wishes").insert({
+      name: name.slice(0, 80),
+      message: message.slice(0, 500)
+    });
+
+    if (submitButton) {
+      submitButton.disabled = false;
+    }
+
+    if (error) {
+      setWishStatus("Ucapan gagal dikirim. Silakan coba lagi.", true);
+      return;
+    }
+
     wishForm.reset();
+    setWishStatus("Terima kasih! Ucapan Anda telah terkirim.", false);
   });
+
+  loadWishes();
 }
 
 const toggleGift = document.querySelector("#toggleGift");
@@ -198,7 +331,7 @@ const closeMusicCredit = ({ returnFocus = true } = {}) => {
 };
 
 if (backgroundMusic && musicToggle) {
-  backgroundMusic.volume = 0.35;
+  backgroundMusic.volume = 0.40;
   backgroundMusic.addEventListener("play", updateMusicToggle);
   backgroundMusic.addEventListener("pause", updateMusicToggle);
   backgroundMusic.addEventListener("ended", updateMusicToggle);
