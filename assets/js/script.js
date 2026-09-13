@@ -145,6 +145,57 @@ if ("IntersectionObserver" in window) {
 }
 
 const openInvitation = document.querySelector("#openInvitation");
+const backgroundMusic = document.querySelector("#backgroundMusic");
+const musicToggle = document.querySelector("#musicToggle");
+let musicManuallyPaused = false;
+let musicPausedByVisibility = false;
+
+const updateMusicToggle = () => {
+  if (!backgroundMusic || !musicToggle) {
+    return;
+  }
+
+  const isPlaying = !backgroundMusic.paused && !backgroundMusic.ended;
+  const label = isPlaying ? "Jeda musik" : "Putar musik";
+  musicToggle.setAttribute("aria-pressed", String(isPlaying));
+  musicToggle.setAttribute("aria-label", label);
+  musicToggle.setAttribute("title", label);
+};
+
+const playBackgroundMusic = () => {
+  if (!backgroundMusic) {
+    return;
+  }
+
+  const playRequest = backgroundMusic.play();
+  playRequest?.catch(() => updateMusicToggle());
+};
+
+if (backgroundMusic && musicToggle) {
+  backgroundMusic.volume = 0.35;
+  backgroundMusic.addEventListener("play", updateMusicToggle);
+  backgroundMusic.addEventListener("pause", updateMusicToggle);
+  backgroundMusic.addEventListener("ended", updateMusicToggle);
+  backgroundMusic.addEventListener("error", () => {
+    const label = "Musik tidak dapat diputar";
+    musicToggle.disabled = true;
+    musicToggle.setAttribute("aria-label", label);
+    musicToggle.setAttribute("title", label);
+  });
+
+  musicToggle.addEventListener("click", () => {
+    musicPausedByVisibility = false;
+
+    if (backgroundMusic.paused) {
+      musicManuallyPaused = false;
+      playBackgroundMusic();
+    } else {
+      musicManuallyPaused = true;
+      backgroundMusic.pause();
+    }
+  });
+}
+
 const revealNavigation = () => {
   document.body.classList.add("invitation-open");
   invitationContent?.removeAttribute("hidden");
@@ -155,11 +206,23 @@ const revealNavigation = () => {
 
 openInvitation?.addEventListener("click", (event) => {
   event.preventDefault();
+  musicManuallyPaused = false;
+  musicPausedByVisibility = false;
+  musicToggle?.removeAttribute("hidden");
+  playBackgroundMusic();
   revealNavigation();
   document.querySelector("#couple")?.scrollIntoView({ block: "start" });
 });
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+const onMotionPreferenceChange = (handler) => {
+  if (typeof reduceMotion.addEventListener === "function") {
+    reduceMotion.addEventListener("change", handler);
+  } else {
+    reduceMotion.addListener(handler);
+  }
+};
+
 const sliderControllers = [...document.querySelectorAll("[data-slider]")].map((slider) => {
   const slides = [...slider.querySelectorAll("[data-slide]")];
   const dots = [...slider.querySelectorAll("[data-slide-dot]")];
@@ -317,8 +380,22 @@ if ("IntersectionObserver" in window) {
 
 document.addEventListener("visibilitychange", () => {
   autoplayControllers.forEach((controller) => controller.scheduleAutoplay());
+
+  if (!backgroundMusic || !document.body.classList.contains("invitation-open")) {
+    return;
+  }
+
+  if (document.hidden) {
+    if (!backgroundMusic.paused) {
+      musicPausedByVisibility = true;
+      backgroundMusic.pause();
+    }
+  } else if (musicPausedByVisibility && !musicManuallyPaused) {
+    musicPausedByVisibility = false;
+    playBackgroundMusic();
+  }
 });
-reduceMotion.addEventListener("change", () => {
+onMotionPreferenceChange(() => {
   autoplayControllers.forEach((controller) => controller.refreshMotionPreference());
 });
 
@@ -366,4 +443,4 @@ const refreshRevealMotion = () => {
 };
 
 refreshRevealMotion();
-reduceMotion.addEventListener("change", refreshRevealMotion);
+onMotionPreferenceChange(refreshRevealMotion);

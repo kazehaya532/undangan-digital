@@ -2,7 +2,7 @@
 <html lang="id">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta
       name="description"
       content="Undangan pernikahan digital Aurum dan Fahrur."
@@ -20,8 +20,8 @@
   <body>
     <!--
       THESIS: A reference-style digital wedding invitation that opens like a ceremonial cover and then unfolds through couple, event, wish, and gift sections without losing the plum/lavender/denim/blue/white identity.
-      OWN-WORLD: Lavender-white gated invitation canvas, deep denim typography, plum ornamental rules, misted blue portrait placeholders, image-backed scripture/wish/closing sections, spacious desktop spreads, and mobile bottom navigation.
-      STORY: Guests open the invitation, meet Aurum and Fahrur, read the December 6 event details, send a local wish, inspect placeholder gift details, save the date, and open the venue map.
+      OWN-WORLD: Lavender-white gated invitation canvas, deep denim typography, plum ornamental rules, real portrait photography, image-backed scripture/wish/closing sections, spacious desktop spreads, and mobile bottom navigation.
+      STORY: Guests open the invitation, meet Aurum and Fahrur, read the December 6 event details, send a local wish, inspect confirmed gift details, save the date, and open the venue map.
       FIRST VIEWPORT: A full-height locked cover with “The Wedding Of,” Aurum & Fahrur, the Indonesian date, guest-recipient card, and one dominant Buka Undangan action; all later content remains hidden until opened.
       FORM: Reference-inspired mobile wedding invitation flow requested by the user; palette remains plum/lavender/denim/blue/white from the prior approved direction.
       FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
@@ -56,8 +56,8 @@
               src="assets/images/couple-aurum-fahrur.jpg"
               width="1200"
               height="1800"
-              alt="Aurum dan Fahrur mengenakan busana biru"
-              loading="lazy"
+              alt="Fahrur duduk dan Aurum berdiri mengenakan busana biru"
+              fetchpriority="high"
               decoding="async"
             />
           </figure>
@@ -71,7 +71,7 @@
             <article class="person-card" data-reveal="item" style="--reveal-order: 3">
               <h3>Aurum</h3>
               <p class="person-card__name">Aurum Khoirunnisa, S.T</p>
-              <p>Putri pertama dari Bapak Alm. Dede Abdul Hakim dan Ibu Darsih Siswati</p>
+              <p>Putri pertama dari Bapak Alm. Dede Abdul Hakim dan Ibu Darsih Siswati, S.Pd</p>
             </article>
             <div class="ampersand" aria-hidden="true" data-reveal="item" style="--reveal-order: 4">&amp;</div>
             <article class="person-card" data-reveal="item" style="--reveal-order: 5">
@@ -132,19 +132,19 @@
           <button class="slider-button slider-button--prev" type="button" data-slider-prev aria-label="Foto sebelumnya">Prev</button>
           <div class="slides" id="photoSlides">
             <figure class="portrait-slide portrait-slide--photo is-active" data-slide role="group" aria-roledescription="slide" aria-label="1 dari 5">
-              <img src="assets/images/moment-01.jpg" width="1200" height="1800" alt="Aurum dan Fahrur berdiri berdampingan" loading="lazy" decoding="async" />
+              <img src="assets/images/moment-01.jpg" width="1200" height="1800" alt="Aurum dan Fahrur berpose dengan busana biru" loading="lazy" decoding="async" />
             </figure>
             <figure class="portrait-slide portrait-slide--photo" data-slide role="group" aria-roledescription="slide" aria-label="2 dari 5" aria-hidden="true">
-              <img src="assets/images/moment-02.jpg" width="1200" height="1800" alt="Aurum dan Fahrur saling berhadapan" loading="lazy" decoding="async" />
+              <img src="assets/images/moment-02.jpg" width="1200" height="1800" alt="Aurum duduk di samping Fahrur dalam busana biru" loading="lazy" decoding="async" />
             </figure>
             <figure class="portrait-slide portrait-slide--photo" data-slide role="group" aria-roledescription="slide" aria-label="3 dari 5" aria-hidden="true">
-              <img src="assets/images/moment-03.jpg" width="1200" height="1800" alt="Potret Aurum dan Fahrur bersama" loading="lazy" decoding="async" />
+              <img src="assets/images/moment-03.jpg" width="1200" height="1800" alt="Potret seluruh badan Aurum dan Fahrur dalam busana putih dan abu-abu" loading="lazy" decoding="async" />
             </figure>
             <figure class="portrait-slide portrait-slide--photo portrait-slide--lower-focus" data-slide role="group" aria-roledescription="slide" aria-label="4 dari 5" aria-hidden="true">
-              <img src="assets/images/moment-04.jpg" width="1200" height="1800" alt="Potret seluruh badan Aurum dan Fahrur" loading="lazy" decoding="async" />
+              <img src="assets/images/moment-04.jpg" width="1200" height="1800" alt="Aurum duduk membawa bunga bersama Fahrur" loading="lazy" decoding="async" />
             </figure>
             <figure class="portrait-slide portrait-slide--photo" data-slide role="group" aria-roledescription="slide" aria-label="5 dari 5" aria-hidden="true">
-              <img src="assets/images/moment-05.jpg" width="1200" height="1800" alt="Aurum dan Fahrur duduk berdampingan" loading="lazy" decoding="async" />
+              <img src="assets/images/moment-05.jpg" width="1200" height="1800" alt="Aurum dan Fahrur berpose di bawah sorotan cahaya" loading="lazy" decoding="async" />
             </figure>
           </div>
           <button class="slider-button slider-button--next" type="button" data-slider-next aria-label="Foto berikutnya">Next</button>
@@ -161,13 +161,13 @@
 
       <section class="quote image-section section-panel" id="wish-start" aria-labelledby="quote-title" data-slider data-autoplay data-direction="left" data-interval="4800" data-reveal-section>
         <div class="background-slider quote__media" aria-label="Slideshow foto portrait Q.S. Ar-Rum" data-reveal="backdrop" style="--reveal-order: 0">
-          <figure class="background-slide has-photo is-active" data-slide role="group" aria-roledescription="slide" aria-label="Foto 1 dari 3: Aurum dan Fahrur saling berhadapan" style="--portrait-image: url('../images/moment-02.jpg'); --portrait-position: 50% 48%">
+          <figure class="background-slide has-photo is-active" data-slide role="group" aria-roledescription="slide" aria-label="Foto 1 dari 3: Aurum duduk di samping Fahrur" style="--portrait-image: url('../images/moment-02.jpg'); --portrait-position: 50% 54%">
             <img src="assets/images/moment-02.jpg" width="1200" height="1800" alt="" loading="lazy" decoding="async" />
           </figure>
-          <figure class="background-slide has-photo" data-slide role="group" aria-roledescription="slide" aria-label="Foto 2 dari 3: potret seluruh badan Aurum dan Fahrur" aria-hidden="true" style="--portrait-image: url('../images/moment-04.jpg'); --portrait-position: 50% 66%">
+          <figure class="background-slide has-photo" data-slide role="group" aria-roledescription="slide" aria-label="Foto 2 dari 3: Aurum duduk membawa bunga bersama Fahrur" aria-hidden="true" style="--portrait-image: url('../images/moment-04.jpg'); --portrait-position: 50% 58%">
             <img src="assets/images/moment-04.jpg" width="1200" height="1800" alt="" loading="lazy" decoding="async" />
           </figure>
-          <figure class="background-slide has-photo" data-slide role="group" aria-roledescription="slide" aria-label="Foto 3 dari 3: Aurum dan Fahrur duduk berdampingan" aria-hidden="true" style="--portrait-image: url('../images/moment-05.jpg'); --portrait-position: 50% 48%">
+          <figure class="background-slide has-photo" data-slide role="group" aria-roledescription="slide" aria-label="Foto 3 dari 3: Aurum dan Fahrur di bawah sorotan cahaya" aria-hidden="true" style="--portrait-image: url('../images/moment-05.jpg'); --portrait-position: 50% 58%">
             <img src="assets/images/moment-05.jpg" width="1200" height="1800" alt="" loading="lazy" decoding="async" />
           </figure>
         </div>
@@ -238,13 +238,13 @@
 
       <section class="closing section-screen" aria-labelledby="closing-title" data-slider data-autoplay data-direction="right" data-interval="5200" data-reveal-section>
         <div class="background-slider closing__media" aria-label="Slideshow foto portrait penutup" data-reveal="backdrop" style="--reveal-order: 0">
-          <figure class="background-slide has-photo is-active" data-slide role="group" aria-roledescription="slide" aria-label="Foto penutup 1 dari 3: Aurum dan Fahrur berdiri berdampingan" style="--portrait-image: url('../images/moment-01.jpg'); --portrait-position: 50% 48%">
+          <figure class="background-slide has-photo is-active" data-slide role="group" aria-roledescription="slide" aria-label="Foto penutup 1 dari 3: Aurum dan Fahrur berpose dengan busana biru" style="--portrait-image: url('../images/moment-01.jpg'); --portrait-position: 50% 50%">
             <img src="assets/images/moment-01.jpg" width="1200" height="1800" alt="" loading="lazy" decoding="async" />
           </figure>
-          <figure class="background-slide has-photo" data-slide role="group" aria-roledescription="slide" aria-label="Foto penutup 2 dari 3: potret Aurum dan Fahrur bersama" aria-hidden="true" style="--portrait-image: url('../images/moment-03.jpg'); --portrait-position: 50% 50%">
+          <figure class="background-slide has-photo" data-slide role="group" aria-roledescription="slide" aria-label="Foto penutup 2 dari 3: Aurum dan Fahrur dalam busana putih dan abu-abu" aria-hidden="true" style="--portrait-image: url('../images/moment-03.jpg'); --portrait-position: 50% 50%">
             <img src="assets/images/moment-03.jpg" width="1200" height="1800" alt="" loading="lazy" decoding="async" />
           </figure>
-          <figure class="background-slide has-photo" data-slide role="group" aria-roledescription="slide" aria-label="Foto penutup 3 dari 3: Aurum dan Fahrur duduk berdampingan" aria-hidden="true" style="--portrait-image: url('../images/moment-05.jpg'); --portrait-position: 50% 48%">
+          <figure class="background-slide has-photo" data-slide role="group" aria-roledescription="slide" aria-label="Foto penutup 3 dari 3: Aurum dan Fahrur di bawah sorotan cahaya" aria-hidden="true" style="--portrait-image: url('../images/moment-05.jpg'); --portrait-position: 50% 58%">
             <img src="assets/images/moment-05.jpg" width="1200" height="1800" alt="" loading="lazy" decoding="async" />
           </figure>
         </div>
@@ -263,10 +263,26 @@
             Merupakan kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i
             berkenan hadir dan memberikan doa restu.
           </p>
+          <p class="music-credit" data-reveal="copy" style="--reveal-order: 5">
+            Musik:
+            <a href="https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100044" target="_blank" rel="noreferrer">There is Romance</a>
+            oleh Kevin MacLeod,
+            <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0</a>
+          </p>
         </div>
       </section>
       </div>
     </main>
+
+    <audio id="backgroundMusic" src="assets/audio/there-is-romance.mp3" preload="metadata" loop></audio>
+    <button class="music-toggle" id="musicToggle" type="button" aria-label="Putar musik" title="Putar musik" aria-pressed="false" hidden>
+      <svg class="music-toggle__icon music-toggle__icon--play" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="m8 5 11 7-11 7V5z" />
+      </svg>
+      <svg class="music-toggle__icon music-toggle__icon--pause" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M7 5h3v14H7zM14 5h3v14h-3z" />
+      </svg>
+    </button>
 
     <nav class="bottom-nav" aria-label="Navigasi undangan" aria-hidden="true" inert>
       <a href="#section-cover" aria-label="Home">
