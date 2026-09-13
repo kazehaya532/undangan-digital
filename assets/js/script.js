@@ -146,7 +146,10 @@ if ("IntersectionObserver" in window) {
 
 const openInvitation = document.querySelector("#openInvitation");
 const backgroundMusic = document.querySelector("#backgroundMusic");
+const musicCluster = document.querySelector("#musicCluster");
 const musicToggle = document.querySelector("#musicToggle");
+const musicInfo = document.querySelector("#musicInfo");
+const musicCredit = document.querySelector("#musicCredit");
 let musicManuallyPaused = false;
 let musicPausedByVisibility = false;
 
@@ -169,6 +172,29 @@ const playBackgroundMusic = () => {
 
   const playRequest = backgroundMusic.play();
   playRequest?.catch(() => updateMusicToggle());
+};
+
+const isMusicCreditOpen = () => Boolean(musicCredit) && !musicCredit.hidden;
+
+const openMusicCredit = () => {
+  if (!musicCredit || !musicInfo) {
+    return;
+  }
+
+  musicCredit.removeAttribute("hidden");
+  musicInfo.setAttribute("aria-expanded", "true");
+};
+
+const closeMusicCredit = ({ returnFocus = true } = {}) => {
+  if (!musicCredit || !musicInfo) {
+    return;
+  }
+
+  musicCredit.setAttribute("hidden", "");
+  musicInfo.setAttribute("aria-expanded", "false");
+  if (returnFocus) {
+    musicInfo.focus({ preventScroll: true });
+  }
 };
 
 if (backgroundMusic && musicToggle) {
@@ -196,6 +222,32 @@ if (backgroundMusic && musicToggle) {
   });
 }
 
+musicInfo?.addEventListener("click", () => {
+  if (isMusicCreditOpen()) {
+    closeMusicCredit();
+  } else {
+    openMusicCredit();
+  }
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && isMusicCreditOpen()) {
+    closeMusicCredit();
+  }
+});
+
+document.addEventListener("click", (event) => {
+  if (!isMusicCreditOpen()) {
+    return;
+  }
+
+  if (musicCluster && musicCluster.contains(event.target)) {
+    return;
+  }
+
+  closeMusicCredit({ returnFocus: false });
+});
+
 const revealNavigation = () => {
   document.body.classList.add("invitation-open");
   invitationContent?.removeAttribute("hidden");
@@ -208,7 +260,7 @@ openInvitation?.addEventListener("click", (event) => {
   event.preventDefault();
   musicManuallyPaused = false;
   musicPausedByVisibility = false;
-  musicToggle?.removeAttribute("hidden");
+  musicCluster?.removeAttribute("hidden");
   playBackgroundMusic();
   revealNavigation();
   document.querySelector("#couple")?.scrollIntoView({ block: "start" });

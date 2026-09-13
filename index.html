@@ -263,26 +263,37 @@
             Merupakan kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i
             berkenan hadir dan memberikan doa restu.
           </p>
-          <p class="music-credit" data-reveal="copy" style="--reveal-order: 5">
-            Musik:
-            <a href="https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100044" target="_blank" rel="noreferrer">There is Romance</a>
-            oleh Kevin MacLeod,
-            <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0</a>
-          </p>
         </div>
       </section>
       </div>
     </main>
 
     <audio id="backgroundMusic" src="assets/audio/there-is-romance.mp3" preload="metadata" loop></audio>
-    <button class="music-toggle" id="musicToggle" type="button" aria-label="Putar musik" title="Putar musik" aria-pressed="false" hidden>
-      <svg class="music-toggle__icon music-toggle__icon--play" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <path d="m8 5 11 7-11 7V5z" />
-      </svg>
-      <svg class="music-toggle__icon music-toggle__icon--pause" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <path d="M7 5h3v14H7zM14 5h3v14h-3z" />
-      </svg>
-    </button>
+    <div class="music-cluster" id="musicCluster" hidden>
+      <button class="music-toggle" id="musicToggle" type="button" aria-label="Putar musik" title="Putar musik" aria-pressed="false">
+        <svg class="music-toggle__icon music-toggle__icon--play" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="m8 5 11 7-11 7V5z" />
+        </svg>
+        <svg class="music-toggle__icon music-toggle__icon--pause" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M7 5h3v14H7zM14 5h3v14h-3z" />
+        </svg>
+      </button>
+      <button class="music-info" id="musicInfo" type="button" aria-label="Info musik" title="Info musik" aria-expanded="false" aria-controls="musicCredit">
+        <svg class="music-info__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M11 8h2v2h-2zM11 11h2v6h-2z" />
+        </svg>
+      </button>
+      <div class="music-credit" id="musicCredit" aria-label="Kredit musik" hidden>
+        <p class="music-credit__title">Kredit musik</p>
+        <p class="music-credit__body">
+          <cite>There is Romance</cite> &mdash; Kevin MacLeod
+          (<a href="https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100044" target="_blank" rel="noreferrer">incompetech.com</a>),
+          dilisensikan di bawah
+          <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0</a>.
+          Berkas audio ditranskode ke 128 kbps MP3 tanpa mengubah komposisi.
+        </p>
+      </div>
+    </div>
 
     <nav class="bottom-nav" aria-label="Navigasi undangan" aria-hidden="true" inert>
       <a href="#section-cover" aria-label="Home">

@@ -1368,22 +1368,22 @@ textarea {
   text-transform: uppercase;
 }
 
-.closing .music-credit {
-  margin-top: 1.4rem;
-  color: rgba(255, 254, 254, 0.72);
-  font-size: 0.7rem;
-  line-height: 1.6;
-}
-
-.music-credit a {
-  color: var(--white);
-}
-
-.music-toggle {
+.music-cluster {
   position: fixed;
   right: max(1rem, env(safe-area-inset-right, 0px));
   bottom: max(5rem, calc(4.25rem + env(safe-area-inset-bottom, 0px)));
   z-index: 21;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.music-cluster[hidden] {
+  display: none;
+}
+
+.music-toggle,
+.music-info {
   width: 2.75rem;
   height: 2.75rem;
   min-height: 2.75rem;
@@ -1399,17 +1399,15 @@ textarea {
   transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
 }
 
-.music-toggle[hidden] {
-  display: none;
-}
-
-.music-toggle:focus-visible {
+.music-toggle:focus-visible,
+.music-info:focus-visible {
   border-color: var(--white);
   background: var(--denim);
   transform: scale(1.04);
 }
 
-.music-toggle:active {
+.music-toggle:active,
+.music-info:active {
   transform: scale(0.96);
 }
 
@@ -1419,7 +1417,8 @@ textarea {
   transform: none;
 }
 
-.music-toggle__icon {
+.music-toggle__icon,
+.music-info__icon {
   width: 1rem;
   height: 1rem;
   fill: currentColor;
@@ -1432,6 +1431,61 @@ textarea {
 
 .music-toggle[aria-pressed="true"] .music-toggle__icon--pause {
   display: block;
+}
+
+.music-credit {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 0.75rem);
+  width: min(22rem, calc(100vw - 2rem));
+  padding: 1rem 1.1rem 1.15rem;
+  border: 1px solid rgba(23, 37, 74, 0.16);
+  background: rgba(255, 254, 254, 0.97);
+  box-shadow: 0 18px 46px rgba(23, 37, 74, 0.26);
+  color: var(--denim);
+  animation: music-credit-in 260ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.music-credit[hidden] {
+  display: none;
+}
+
+.music-credit__title {
+  margin: 0 0 0.4rem;
+  color: var(--plum);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.music-credit__body {
+  margin: 0;
+  color: var(--denim-soft);
+  font-size: 0.82rem;
+  line-height: 1.65;
+}
+
+.music-credit__body cite {
+  color: var(--denim);
+  font-style: italic;
+}
+
+.music-credit__body a {
+  color: var(--plum);
+  text-underline-offset: 0.24em;
+}
+
+@keyframes music-credit-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.4rem) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .bottom-nav {
@@ -1497,7 +1551,8 @@ body.invitation-open .bottom-nav {
     transform: scale(1.04);
   }
 
-  .music-toggle:hover {
+  .music-toggle:hover,
+  .music-info:hover {
     border-color: var(--white);
     background: var(--denim);
     transform: scale(1.04);
@@ -1546,7 +1601,7 @@ body.invitation-open .bottom-nav {
     border-radius: 1.2rem;
   }
 
-  .music-toggle {
+  .music-cluster {
     right: calc((100vw - 520px) / 2 + 1rem);
     bottom: 5.7rem;
   }
@@ -1637,7 +1692,7 @@ body.invitation-open .bottom-nav {
     width: min(calc(100% - 4rem), 760px);
   }
 
-  .music-toggle {
+  .music-cluster {
     right: calc((100vw - min(calc(100vw - 4rem), 1180px)) / 2 + 1rem);
   }
 }
@@ -1691,6 +1746,12 @@ body.invitation-open .bottom-nav {
     filter: none;
     transform: none;
     transition: none;
+  }
+
+  .music-credit {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
   }
 }
 

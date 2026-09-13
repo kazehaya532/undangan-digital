@@ -36,4 +36,4 @@ For a cinematic portrait slide, add `has-photo`, set `--portrait-image` to the s
 
 ## Background Music
 
-Opening the invitation starts `There is Romance` by Kevin MacLeod at 35% volume. The track loops while the invitation is open, pauses while the page is hidden, and can be paused or resumed with the fixed music control. The source, Creative Commons Attribution 4.0 license, and encoding details are recorded in `THIRD_PARTY_NOTICES.md`.
+Opening the invitation starts `There is Romance` by Kevin MacLeod at 35% volume. The track loops while the invitation is open, pauses while the page is hidden, and can be paused or resumed with the fixed music control. A sibling info button reveals a compact credit popover with the source and license; full provenance and encoding details live in `THIRD_PARTY_NOTICES.md`.
