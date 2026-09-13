@@ -81,9 +81,7 @@ Social preview metadata and a dedicated 1200x630 preview image are deferred.
 
 ## Invitation Content
 
-The invitation presents Fahrur and Aurum's wedding in a guided, mobile-first experience. Guests open a personalized cover, meet the couple and their families, view the ceremony and reception schedule, follow the countdown, save the date, open the venue map, share a moderated wedding wish, and view the digital gift information.
-
-The wedding takes place at Griya Curug Blok D5 No.23 on Minggu, 6 Desember 2026. Akad begins at 09.00 WIB and the reception begins at 10.00 WIB. The invitation also includes wedding moments, Q.S. Ar-Rum: 21, background music, and a closing message from the couple.
+The invitation presents Fahrur and Aurum's wedding in a guided, mobile-first experience. Guests open a personalized cover, meet the couple and their families, view the ceremony and reception schedule, follow the countdown, save the date, open the venue map, share a moderated wedding wish, and view the digital gift information. The invitation also includes wedding moments, wedding wish section, background music, and a closing message from the couple.
 
 ## Background Music
 
