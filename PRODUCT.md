@@ -24,7 +24,7 @@ The invitation is a crafted ceremonial web object, not a generic event page: it 
 
 ## Operating Context
 
-Guests may view personalized invitation links on phones in portrait orientation, share them through chat, and revisit the site shortly before the event for time and location details.
+Guests may view personalized invitation links on phones in portrait orientation, share them through chat with a shared social preview card, and revisit the site shortly before the event for time and location details.
 
 ## Capabilities and Constraints
 
