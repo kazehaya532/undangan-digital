@@ -97,8 +97,6 @@ if (countdown) {
 const wishForm = document.querySelector("#wishForm");
 const wishList = document.querySelector("#wishList");
 const wishStatus = document.querySelector("#wishStatus");
-const wishCount = document.querySelector("#wishCount");
-const wishPagination = document.querySelector("#wishPagination");
 
 const wishConfig = window.WEDDING_CONFIG || {};
 const isPlaceholder = (value) =>
@@ -144,134 +142,23 @@ const relativeWishTime = (isoString) => {
     return `${hours} jam lalu`;
   }
 
-  const days = Math.floor(hours / 24);
-  if (days < 7) {
-    return `${days} hari lalu`;
-  }
-
-  const weeks = Math.floor(days / 7);
-  if (days < 30) {
-    return `${weeks} minggu lalu`;
-  }
-
-  const months = Math.floor(days / 30);
-  if (months < 12) {
-    return `${months} bulan lalu`;
-  }
-
-  return `${Math.floor(months / 12)} tahun lalu`;
+  return `${Math.floor(hours / 24)} hari lalu`;
 };
 
-const createWishArticle = (wish) => {
+const renderWish = (wish) => {
   const article = document.createElement("article");
-  const header = document.createElement("div");
   const author = document.createElement("strong");
   const copy = document.createElement("p");
   const time = document.createElement("small");
-  const clock = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  const clockPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
 
-  article.setAttribute("role", "listitem");
-  header.className = "wish-item__header";
-  time.className = "wish-item__time";
-  copy.className = "wish-item__message";
   author.textContent = wish.name;
   copy.textContent = wish.message;
   time.textContent = relativeWishTime(wish.created_at);
-  clock.setAttribute("viewBox", "0 0 24 24");
-  clock.setAttribute("aria-hidden", "true");
-  clockPath.setAttribute("d", "M12 7v5l3 2m6-2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z");
-  clock.append(clockPath);
-  time.prepend(clock);
-  header.append(author, time);
-  article.append(header, copy);
-  return article;
+  article.append(author, copy, time);
+  wishList.prepend(article);
 };
 
 if (wishForm && wishList) {
-  let wishes = [];
-  let wishPages = [];
-  let currentWishPage = 0;
-
-  const buildWishPages = () => {
-    if (!wishes.length) {
-      wishPages = [];
-      return;
-    }
-
-    const measureList = document.createElement("div");
-    measureList.className = "wish-list wish-list--measure";
-    measureList.style.width = `${wishList.clientWidth}px`;
-    document.body.append(measureList);
-
-    const maxHeight = Math.max(window.innerHeight * 0.4, 180);
-    const pages = [];
-    let page = [];
-    let pageHeight = 0;
-
-    wishes.forEach((wish) => {
-      const article = createWishArticle(wish);
-      measureList.append(article);
-      const articleHeight = article.getBoundingClientRect().height;
-      measureList.replaceChildren();
-
-      const shouldBreak = page.length >= 3 && pageHeight + articleHeight > maxHeight;
-      if (shouldBreak || page.length === 4) {
-        pages.push(page);
-        page = [];
-        pageHeight = 0;
-      }
-
-      page.push(wish);
-      pageHeight += articleHeight;
-    });
-
-    if (page.length) {
-      pages.push(page);
-    }
-
-    measureList.remove();
-    wishPages = pages;
-  };
-
-  const renderWishPagination = () => {
-    wishPagination.replaceChildren();
-    wishPagination.hidden = wishPages.length <= 1;
-
-    if (wishPages.length <= 1) {
-      return;
-    }
-
-    const addControl = (label, page, disabled, current = false) => {
-      const button = document.createElement("button");
-      button.type = "button";
-      button.textContent = label;
-      button.disabled = disabled;
-      if (current) {
-        button.setAttribute("aria-current", "page");
-      }
-      button.addEventListener("click", () => renderWishPage(page));
-      wishPagination.append(button);
-    };
-
-    addControl("Previous", currentWishPage - 1, currentWishPage === 0);
-    wishPages.forEach((_, page) => addControl(String(page + 1), page, false, page === currentWishPage));
-    addControl("Next", currentWishPage + 1, currentWishPage === wishPages.length - 1);
-  };
-
-  const renderWishPage = (page) => {
-    currentWishPage = Math.max(0, Math.min(page, wishPages.length - 1));
-    wishList.replaceChildren();
-    (wishPages[currentWishPage] || []).forEach((wish) => wishList.append(createWishArticle(wish)));
-    wishList.scrollTop = 0;
-    renderWishPagination();
-  };
-
-  const refreshWishPages = (page = 0) => {
-    buildWishPages();
-    renderWishPage(Math.min(page, Math.max(wishPages.length - 1, 0)));
-  };
-
   const loadWishes = async () => {
     if (!wishClient) {
       return;
@@ -289,11 +176,7 @@ if (wishForm && wishList) {
       return;
     }
 
-    wishes = data || [];
-    if (wishCount) {
-      wishCount.textContent = `${wishes.length} Comments`;
-    }
-    refreshWishPages();
+    (data || []).slice().reverse().forEach(renderWish);
   };
 
   wishForm.addEventListener("submit", async (event) => {
@@ -343,11 +226,6 @@ if (wishForm && wishList) {
   });
 
   loadWishes();
-  let resizeTimer = null;
-  window.addEventListener("resize", () => {
-    window.clearTimeout(resizeTimer);
-    resizeTimer = window.setTimeout(() => refreshWishPages(currentWishPage), 160);
-  });
 }
 
 const toggleGift = document.querySelector("#toggleGift");
