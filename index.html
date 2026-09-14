@@ -90,7 +90,7 @@
               <h3>Akad Nikah</h3>
               <p><strong>Tempat Akad Nikah:</strong> Griya Curug Blok D5 No.23</p>
               <p>Minggu, 6 Desember 2026</p>
-              <time datetime="2026-12-06T09:00:00+07:00">09.00 WIB - Selesai</time>
+              <time datetime="2026-12-06T09:00:00+07:00">09.00 WIB - 10.00 WIB</time>
             </div>
             <a class="button button--ghost" href="https://maps.app.goo.gl/UMWyNgo8sg5Fm4sk7" target="_blank" rel="noreferrer">Kunjungi Lokasi</a>
           </article>
@@ -191,24 +191,28 @@
           <p>Beri Doa &amp; Ucapan Terbaikmu</p>
           <h2 id="wish-title">Wedding Wish</h2>
         </div>
-        <p class="local-note" data-reveal="copy" style="--reveal-order: 1">Doa dan ucapan terbaik Anda adalah kebahagiaan bagi kami.</p>
+        <p class="local-note" data-reveal="copy" style="--reveal-order: 1">Berikan ucapan harapan dan do'a kepada kedua mempelai.</p>
         <form class="wish-form" id="wishForm" data-reveal="media" style="--reveal-order: 2" novalidate>
           <label>
-            <span>Nama</span>
-            <input name="name" autocomplete="name" placeholder="Nama Anda" maxlength="80" required />
+            <span class="sr-only">Nama</span>
+            <input name="name" autocomplete="name" placeholder="Nama" maxlength="80" required />
           </label>
           <label>
-            <span>Pesan</span>
-            <textarea name="message" rows="4" placeholder="Tuliskan doa terbaik Anda" maxlength="500" required></textarea>
+            <span class="sr-only">Ucapan</span>
+            <textarea name="message" rows="4" placeholder="Ucapan" maxlength="500" required></textarea>
           </label>
           <label class="hp-field" aria-hidden="true" tabindex="-1">
             <span>Jangan isi kolom ini</span>
             <input name="website" type="text" autocomplete="off" tabindex="-1" />
           </label>
-          <button class="button button--primary" type="submit">Kirimkan Ucapan</button>
+          <button class="button button--primary" type="submit">Kirim</button>
         </form>
         <p class="wish-status" id="wishStatus" role="status" aria-live="polite"></p>
-        <div class="wish-list" id="wishList" aria-live="polite" data-reveal="item" style="--reveal-order: 3"></div>
+        <div class="wish-list-header" data-reveal="item" style="--reveal-order: 3">
+          <span id="wishCount">0 Comments</span>
+        </div>
+        <div class="wish-list" id="wishList" role="list" aria-live="polite" data-reveal="item" style="--reveal-order: 4"></div>
+        <nav class="wish-pagination" id="wishPagination" aria-label="Wish pagination" hidden data-reveal="item" style="--reveal-order: 5"></nav>
       </section>
 
       <section class="gift section-panel" id="gift" aria-labelledby="gift-title" data-reveal-section>
