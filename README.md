@@ -18,9 +18,16 @@ npm run check
 
 The wish form stores messages in a hosted PostgreSQL database (Supabase) while the site itself stays on GitHub Pages. This requires no server to run: the browser talks to Supabase directly, guarded by Row Level Security.
 
-1. Create a free project at supabase.com, then open **Project Settings -> API Keys** and copy the **Project URL** and **publishable key**.
-2. Paste those values into `assets/js/config.js`. The publishable key is safe to publish because RLS below only lets visitors read approved rows and insert unapproved ones. Never put a secret key in the browser.
-3. Run this SQL in the Supabase **SQL Editor**:
+Two separate Supabase projects keep local testing away from real guest wishes:
+
+| Where the page runs | Supabase project | Purpose |
+| --- | --- | --- |
+| `localhost`, `127.0.0.1`, `::1`, `file://` | development | Local testing only |
+| `undangan-fahrur-aurum.my.id` and any other host | production | Real guest wishes |
+
+`assets/js/config.js` selects the project by hostname, so local submissions never reach production. Both publishable keys are safe to publish because RLS below only lets visitors read approved rows and insert unapproved ones. Never put a secret key in the browser.
+
+Create both projects at supabase.com, then run this SQL in the **SQL Editor** of each one:
 
 ```sql
 create table public.wedding_wishes (
@@ -38,6 +45,8 @@ create policy "read approved" on public.wedding_wishes
 create policy "insert pending" on public.wedding_wishes
   for insert to anon with check (approved = false);
 ```
+
+Copy each project's **Project URL** and **publishable key** (Project Settings -> API Keys) into the matching branch of `assets/js/config.js`. The active environment is logged to the browser console on load.
 
 ### Moderating wishes
 
@@ -63,14 +72,14 @@ https://undangan-fahrur-aurum.my.id/?to=Reni+%26+Furqon
 
 Names are displayed as provided after URL decoding and whitespace cleanup. The page uses `textContent`, so query-string content cannot inject HTML. The local-only helper `tools/guest-links.html` accepts one name per line, removes blank lines and duplicates, then generates correctly encoded links with copy and download actions. Open it directly in a browser; `/tools/` is intentionally ignored by Git.
 
-Social preview metadata and a dedicated 1200x630 preview image are deferred.
+The shared social preview uses `assets/images/social-preview.jpg` at 1200x630. WhatsApp and Meta platforms cache previews, so use their debugger or a fresh query string when rechecking an updated card. The preview is shared across personalized links; the recipient name changes after the page opens.
 
 ## Structure
 
 - `index.html` - GitHub Pages entry page
 - `assets/css/styles.css` - visual system and responsive layout
 - `assets/js/script.js` - countdown, invitation gate, replayable section transitions, photo sliders, wish form (Supabase-backed), gift reveal, and navigation state
-- `assets/js/config.js` - public Supabase project URL and publishable key for the wish form (RLS-protected; never add a secret key)
+- `assets/js/config.js` - host-based Supabase project URL and publishable key for the wish form (development on localhost, production on the live domain; RLS-protected; never add a secret key)
 - `CNAME` - GitHub Pages custom domain declaration
 - `assets/images/` - optimized images published with the invitation
 - `assets/audio/` - optimized, attributed background music published with the invitation

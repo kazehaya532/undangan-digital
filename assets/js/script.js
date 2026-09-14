@@ -1,3 +1,8 @@
+const environmentName = (window.WEDDING_CONFIG || {}).ENVIRONMENT;
+if (environmentName) {
+  console.info(`Supabase environment: ${environmentName}`);
+}
+
 const event = {
   title: "Pernikahan Fahrur & Aurum",
   start: "2026-12-06T09:00:00+07:00",
