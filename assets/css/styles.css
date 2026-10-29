@@ -691,10 +691,13 @@ h1 span {
   line-height: 0.9;
 }
 
-.event-card p,
-.event-card time {
+.event-card p {
   display: block;
   margin-bottom: 0.35rem;
+}
+
+.event-card time {
+  white-space: nowrap;
 }
 
 .event-note {
