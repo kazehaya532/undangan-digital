@@ -1704,8 +1704,12 @@ body.invitation-open .bottom-nav {
 
   .couple-list {
     grid-template-columns: 1fr auto 1fr;
-    align-items: center;
+    align-items: start;
     gap: 2rem;
+  }
+
+  .couple-list .ampersand {
+    padding-top: clamp(1rem, 3vw, 2rem);
   }
 
   .event-stack,
